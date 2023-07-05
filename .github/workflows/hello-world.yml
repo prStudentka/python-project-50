@@ -28,7 +28,7 @@ jobs:
           pip install pytest
       - name: Run linter and pytest
         run: make lint
-        name: Test cover  
+      - name: Test cover  
         run: |
           make check
       - name: Test & publish code coverage
