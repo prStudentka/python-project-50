@@ -25,22 +25,36 @@ jobs:
         run: |
           pip install poetry
           make install
-          pip install pytest
-      - name: Run linter and pytest
+      - name: Run linter
         run: make lint
-      - name: Test cover  
-        run: |
-          make check
-      - name: Pylint test
-        run: pip install pylint
-      - name: Analising the code with pylint
-        run: |
-            pylint $(git ls-files '*.py')    
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.2.0
-        if: github.ref_name == 'main'
-        env:
-          CC_TEST_REPORTER_ID: 1d6cb791c486a1e08ee3fd329db1724658b1c3ac60d2e1be1f8a446751d14d8e
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+
+  coverage:     
+       # if for start 
+        needs: [ build ]
+        name: Test cover
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@master
+          - name: Set up Python
+            uses: actions/setup-python@v3
+            with:
+                python-version: 3.10.0
+         - name: Install dependencies 
+         - run: |
+               pip install poetry
+               pip install pytest
+               pip install pytest-cov
+               make install        
+         - name: Pylint test
+           run: pip install pylint
+         - name: Analising the code with pylint
+           run: |
+              pylint $(git ls-files '*.py')    
+         - name: Test & publish code coverage
+           uses: paambaati/codeclimate-action@v3.2.0
+           if: github.ref_name == 'main'
+           env:
+             CC_TEST_REPORTER_ID: 1d6cb791c486a1e08ee3fd329db1724658b1c3ac60d2e1be1f8a446751d14d8e
+           with:
+              coverageCommand: make test-coverage
+           debug: true
