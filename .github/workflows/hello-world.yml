@@ -37,3 +37,11 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v3.2.0
+      if: github.ref_name == 'main'
+      env:
+         CC_TEST_REPORTER_ID: 1d6cb791c486a1e08ee3fd329db1724658b1c3ac60d2e1be1f8a446751d14d8e
+      with:
+          coverageCommand: make test-coverage
+          debug: true
