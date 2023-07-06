@@ -11,12 +11,12 @@ jobs:
     strategy:
       matrix:
         # we want to test our package on several versions of Python
-        python-version: [3.9, 3.10]
+        python-version: ["3.9", "3.10"]
     steps:
        # checkout — клонирует репозиторий
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
         # make depends on poetry
@@ -31,6 +31,11 @@ jobs:
       - name: Test cover  
         run: |
           make check
+      - name: Pylint test
+        run: pip install pylint
+      - name: Analising the code with pylint
+        run: |
+            pylint $(git ls-files '*.py')    
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.2.0
         if: github.ref_name == 'main'
