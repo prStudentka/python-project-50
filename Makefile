@@ -23,4 +23,4 @@ test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml
 
 pytest: 
-	poetry run pytest tests/diff_json.py
+	poetry run pytest tests/diff_json.py -vv

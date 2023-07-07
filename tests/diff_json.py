@@ -7,6 +7,6 @@ _EXPECTED = 'tests/fixtures/expected_json.txt'
 
 def test_parse_json():
     result = gdiff(_FILE1, _FILE2)
-    with open(_EXPECTED) as f:
+    with open(_EXPECTED, 'r') as f:
       report = f.read()
     assert result == report
