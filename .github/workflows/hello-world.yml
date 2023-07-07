@@ -27,6 +27,7 @@ jobs:
         pip install poetry
         python -m pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        poetry add --dev pytest-cov
         make install
     - name: Lint with flake8
       run: |
