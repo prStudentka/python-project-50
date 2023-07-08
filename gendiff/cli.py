@@ -20,7 +20,7 @@ def start_diff(module):
 
 
 def get_loader(file):
-    with (open(file, 'r') as f:
+    with open(file, 'r') as f:
         loader = pe.parser_suffix((path.PurePath(f).suffix)[1:])
         if loader is None:
             raise Exception('extention error')
