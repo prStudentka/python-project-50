@@ -2,6 +2,7 @@ import argparse
 import pathlib as path
 import parser_end as pe
 
+
 def start_diff(module):
     parser = argparse.ArgumentParser(
        description='Compares two configuration files and shows a difference.'
@@ -14,7 +15,7 @@ def start_diff(module):
     if path.Path(path1).exists() and path.Path(path2).exists():
         loader1 = get_loader(path1)
         loader2 = get_loader(path2)
-        diff = module.generate_diff(loader1(f1), loader2(path2))
+        diff = module.generate_diff(loader1(path1), loader2(path2))
         print(diff)
     raise FileNotFoundError('one of files not found')
 
@@ -25,4 +26,3 @@ def get_loader(file):
         if loader is None:
             raise Exception('extention error')
         return loader
-    
