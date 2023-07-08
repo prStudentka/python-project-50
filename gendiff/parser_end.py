@@ -2,10 +2,8 @@ from json import load as jload
 from pyyaml import safe_load as yload
 
 
-def parser_file(request):
-    _, end_of = request.split('.')
-    if end_of == 'json':
+def parser_suffix(suffix):
+    if suffix == 'json':
         return jload
-    elif end_of in ['yml', 'yaml']:
+    elif suffix in ['yml', 'yaml']:
         return yload
-    return False
