@@ -1,0 +1,11 @@
+from json import load as jload
+from pyyaml import load as yload
+
+
+def parser_file(request):
+    _, end_of = request.split('.')
+    if end_of == 'json':
+        return jload
+    elif end_of in ['yml', 'yaml']:
+        return yload
+    return False
