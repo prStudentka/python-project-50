@@ -12,12 +12,17 @@ def start_diff(module):
     arg = parser.parse_args()
     path1, path2 = arg.first_file, arg.second_file
     if path.Path(path1).exists() and path.Path(path2).exists():
-        with (open(path1, 'r') as f1,
-              open(path2, 'r') as f2):
-            loader1 = pe.parser_suffix((path.PurePath(f1).suffix)[1:])
-            loader2 = pe.parser_suffix((path.PurePath(f2).suffix)[1:])
-            if loader1 is not None and loader2 is not None:
-                diff = module.generate_diff(loader1(f1), loader2(path2))
-                print(diff)
+        loader1 = get_loader(path1)
+        loader2 = get_loader(path2)
+        diff = module.generate_diff(loader1(f1), loader2(path2))
+        print(diff)
     raise FileNotFoundError('one of files not found')
+
+
+def get_loader(file):
+    with (open(file, 'r') as f:
+        loader = pe.parser_suffix((path.PurePath(f).suffix)[1:])
+        if loader is None:
+            raise Exception('extention error')
+        return loader
     
