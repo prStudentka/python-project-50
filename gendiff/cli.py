@@ -1,6 +1,6 @@
 import argparse
 import pathlib as path
-import parser_end as pe
+import gendiff.parser_end as pe
 
 
 def start_diff(module):
@@ -13,16 +13,17 @@ def start_diff(module):
     arg = parser.parse_args()
     path1, path2 = arg.first_file, arg.second_file
     if path.Path(path1).exists() and path.Path(path2).exists():
-        loader1 = get_loader(path1)
-        loader2 = get_loader(path2)
-        diff = module.generate_diff(loader1(path1), loader2(path2))
+        data1 = get_data(path1)
+        data2 = get_data(path2)
+        diff = module.generate_diff(data1, data2)
         print(diff)
-    raise FileNotFoundError('one of files not found')
+    else:
+        raise FileNotFoundError('one of files not found')
 
 
-def get_loader(file):
+def get_data(file):
     with open(file, 'r') as f:
-        loader = pe.parser_suffix((path.PurePath(f).suffix)[1:])
+        loader = pe.parser_suffix((path.PurePath(file).suffix)[1:])
         if loader is None:
             raise Exception('extention error')
-        return loader
+        return loader(f)

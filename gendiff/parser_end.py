@@ -1,5 +1,5 @@
 from json import load as jload
-from pyyaml import safe_load as yload
+from yaml import safe_load as yload
 
 
 def parser_suffix(suffix):
