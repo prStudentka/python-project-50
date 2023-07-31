@@ -1,29 +1,5 @@
-def mkvalue(key, value, meta='unchanged'):
-    return {
-        'name': key,
-        'value': value,
-        'meta': meta,
-        'type': 'value'
-    }
-
-
-def mknest(key, children, meta='unchanged'):
-    return {
-        'name': key,
-        'children': children,
-        'meta': meta,
-        'type': 'nest'
-    }
-
-
-def choose_fill(key, item, meta='unchanged'):
-    if type(item) != dict:
-        return mkvalue(key, item, meta)
-    children = []
-    for key_item in item.keys():
-        children.append(choose_fill(key_item, item[key_item]))
-    return mknest(key, children, meta)
-
+from difference import differ as get_difference
+from formater.stylish import formating
 
 def differ(data1, data2):
     def walk(key):
@@ -46,8 +22,8 @@ def generate_diff(file1, file2, format='stylish'):
     # diff - разница словарь
     # stylish - отображение
     if str(file1).count('{') > 1:
-        dict_diff = differ(file1, file2)
-        return dict_diff
+        dict_diff = get_difference(file1, file2)
+        return formating(dict_diff)
     key = sorted(set(list(file1.keys()) + list(file2.keys())))
     data = ['{']
     for name in key:
