@@ -1,5 +1,5 @@
 from gendiff.difference import differ as get_difference
-from formater.stylish import formating
+from gendiff.formater.stylish import formating
 
 
 def generate_diff(file1, file2, format='stylish'):
