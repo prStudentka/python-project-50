@@ -33,7 +33,7 @@ def differ(data1, data2):
             return choose_fill(key, data1[key], 'remove')
         elif data1[key] == data2[key]:
             return mkvalue(key, data1[key])
-        if isinstance(data1[key],dict) and isinstance(data2[key], dict):
+        if isinstance(data1[key], dict) and isinstance(data2[key], dict):
             return mknest(key, differ(data1[key], data2[key]))
         else:
             change_dict = choose_fill(key, data1[key], 'remove')
