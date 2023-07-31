@@ -3,6 +3,11 @@ _DICT_CHANGE = {
     'add': '+ ',
     'unchanged': '  '
 }
+_DICT_CONVERT = {
+    False: 'false',
+    True: 'true',
+    None: 'null'
+}
 _INDENT = 4
 _REPLACER = ' '
 
@@ -15,6 +20,10 @@ def is_value(node):
     return node['type'] == 'value'
 
 
+def convert(elem):
+    return _DICT_CONVERT.get(elem, elem)
+
+
 def formating(diffs, lvl=1):
     result = ['{']
     indent = (_INDENT - 2) * _REPLACER
@@ -24,7 +33,7 @@ def formating(diffs, lvl=1):
             sign = _DICT_CHANGE.get(item['meta'], '')
             deep = f'{indent * lvl}{sign}{item["name"]}: '
             if is_value(item):
-                value = f'{deep}{item["value"]}'
+                value = f'{deep}{convert(item["value"])}'
                 result.append(value)
             if is_nest(item):
                 if sign:
