@@ -17,7 +17,7 @@ def mknest(key, children, meta='unchanged'):
 
 
 def choose_fill(key, item, meta='unchanged'):
-    if type(item) != dict:
+    if type(item) is dict:
         return mkvalue(key, item, meta)
     children = []
     for key_item in item.keys():
