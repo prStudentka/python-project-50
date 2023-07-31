@@ -1,4 +1,4 @@
-_DICT_CHANGE={
+_DICT_CHANGE = {
     'remove': '- ',
     'add': '+ ',
     'unchanged': '  '
@@ -18,6 +18,7 @@ def is_value(node):
 def formating(diffs, lvl=1):
     result = ['{']
     indent = (_INDENT - 2) * _REPLACER
+
     def walk(values):
         for item in values:
             sign = _DICT_CHANGE.get(item['meta'], '')
