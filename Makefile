@@ -27,3 +27,6 @@ pytest:
 
 example:
 	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yaml
+
+tree:
+	poetry run gendiff tests/fixtures/tree1.json tests/fixtures/tree2.json
