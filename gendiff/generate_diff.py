@@ -1,4 +1,4 @@
-from difference import differ as get_difference
+from gendiff.difference import differ as get_difference
 from formater.stylish import formating
 
 
