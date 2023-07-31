@@ -26,4 +26,4 @@ pytest:
 	poetry run pytest tests/diff_json.py -vv
 
 example:
-        poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yaml
+	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yaml
