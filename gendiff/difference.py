@@ -28,15 +28,15 @@ def choose_fill(key, item, meta='unchanged'):
 def differ(data1, data2):
     def walk(key):
         if key not in data1:
-            return choose_fill(key, data2[key], 'add')
+            return choose_fill(key, data2[key], 'added')
         elif key not in data2:
-            return choose_fill(key, data1[key], 'remove')
+            return choose_fill(key, data1[key], 'removed')
         elif data1[key] == data2[key]:
             return mkvalue(key, data1[key])
         if isinstance(data1[key], dict) and isinstance(data2[key], dict):
             return mknest(key, differ(data1[key], data2[key]))
         else:
-            change_dict = choose_fill(key, data1[key], 'remove')
-            change_dict2 = choose_fill(key, data2[key], 'add')
-            return mknest(key, [change_dict, change_dict2], 'change')
+            change_dict = choose_fill(key, data1[key], 'removed')
+            change_dict2 = choose_fill(key, data2[key], 'added')
+            return mknest(key, [change_dict, change_dict2], 'updated')
     return list(map(walk, sorted((data1.keys() | data2.keys()))))
