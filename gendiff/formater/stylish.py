@@ -1,6 +1,6 @@
 _DICT_CHANGE = {
-    'remove': '- ',
-    'add': '+ ',
+    'removed': '- ',
+    'added': '+ ',
     'unchanged': '  '
 }
 _DICT_CONVERT = {
