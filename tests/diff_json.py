@@ -38,5 +38,5 @@ def test_parser_suffix():
 def test_parse_json():
     result = gdiff(get_data(_FILE1), get_data(_FILE2))
     with open(_EXPECTED, 'r') as f:
-      report = f.read()
+      report = f.readlines()
     assert result == report
