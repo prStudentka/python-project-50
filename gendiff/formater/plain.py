@@ -32,7 +32,7 @@ def formating(diffs, path=""):
                 lines.append(level)
         if is_nest(item):
             if item['meta'] == 'updated':
-                value =list(map(convert, item['children']))
+                value = list(map(convert, item['children']))
                 lines.append(f"{level}. From {(value[0])} to {value[1]}")
             elif item['meta'] == 'unchanged':
                 value = formating(item['children'], f"{head}.")
