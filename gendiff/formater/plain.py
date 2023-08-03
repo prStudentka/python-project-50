@@ -19,24 +19,19 @@ def convert(elem):
     return '[complex value]'
 
 
-def get_value(item):
-    tail = ''
-    if item['meta'] == 'added':
-        tail = f" with value: {convert(item)}"
-    if item['meta'] == 'updated':
-        value = list(map(convert, item['children']))
-        tail = f". From {(value[0])} to {value[1]}"
-    return f"{item['meta']}{tail}"
-
-
 def formating(diffs, path=""):
     lines = []
     for item in diffs:
         head = f"{path}{item['name']}"
         level = f"Property '{head}' was "
         if item['meta'] in ['removed', 'added',  'updated']:
-            value = f"{level}{get_value(item)}"
-            lines.append(value)
+            tail = ''
+            if item['meta'] == 'added':
+                tail = f" with value: {convert(item)}"
+            if item['meta'] == 'updated':
+                value = list(map(convert, item['children']))
+                tail = f". From {(value[0])} to {value[1]}"
+            lines.append(f"{level}{item['meta']}{tail}")
         if is_nest(item) and item['meta'] == 'unchanged':
             value = formating(item['children'], f"{head}.")
             lines.append(f"{value}")
