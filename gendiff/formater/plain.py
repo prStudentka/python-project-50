@@ -23,17 +23,16 @@ def formating(diffs, path=""):
     lines = []
     for item in diffs:
         head = f"{path}{item['name']}"
-        if item['meta'] != 'unchanged':
-            level = f"Property '{head}' was {item['meta']}"
-            if item['meta'] == 'added':
-                value = f"{level} with value: {convert(item)}"
-                lines.append(value)
-            elif item['meta'] == 'removed':
-                lines.append(level)
+        level = f"Property '{head}' was "
+        if item['meta'] == 'added':
+            value = f"{level + item['meta']} with value: {convert(item)}"
+            lines.append(value)
+        if item['meta'] == 'removed':
+            lines.append(level + item['meta'])
         if is_nest(item):
             if item['meta'] == 'updated':
                 value = list(map(convert, item['children']))
-                lines.append(f"{level}. From {(value[0])} to {value[1]}")
+                lines.append(f"{level + item['meta']}. From {(value[0])} to {value[1]}")
             elif item['meta'] == 'unchanged':
                 value = formating(item['children'], f"{head}.")
                 lines.append(f"{value}")
