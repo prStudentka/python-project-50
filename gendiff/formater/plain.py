@@ -4,8 +4,13 @@ _DICT_CONVERT = {
     None: 'null'
 }
 
+
 def is_nest(node):
     return node['type'] == 'nest'
+
+
+def is_value(node):
+    return node['type'] == 'value'
 
 
 def convert(elem):
