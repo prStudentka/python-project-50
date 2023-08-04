@@ -1,11 +1,13 @@
 from gendiff.difference import differ as get_difference
 from .formater.stylish import formating as stylish
 from .formater.plain import formating as plain
+from .formater.to_json import formating as js
 
 
 _DICT_FORMATS = {
     'stylish': stylish,
-    'plain': plain
+    'plain': plain,
+    'json': js
 }
 
 
