@@ -10,8 +10,8 @@ def start_diff(module):
     parser.add_argument('first_file', type=str)
     parser.add_argument('second_file', type=str)
     parser.add_argument('-f', '--format', default='stylish',
-                    choices=['stylish', 'plain', 'json'],
-                    help='set format of output, default="stylish"')
+                        choices=['stylish', 'plain', 'json'],
+                        help='set format of output, default="stylish"')
     arg = parser.parse_args()
     path1, path2 = arg.first_file, arg.second_file
     if path.Path(path1).exists() and path.Path(path2).exists():
