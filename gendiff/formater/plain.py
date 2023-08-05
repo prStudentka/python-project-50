@@ -15,7 +15,7 @@ def is_value(node):
 
 def convert(elem):
     if is_value(elem):
-        return _DICT_CONVERT.get(f'{elem['value']}', f"'{elem['value']}'")
+        return _DICT_CONVERT.get(f"{elem['value']}", f"'{elem['value']}'")
     return '[complex value]'
 
 
