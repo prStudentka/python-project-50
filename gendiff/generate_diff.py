@@ -12,8 +12,12 @@ _DICT_FORMATS = {
 }
 
 
-def generate_diff():
+def start_diff():
     file1, file2, _format = start_cli()
-    dict_diff = get_difference(file1, file2)
-    diff = _DICT_FORMATS.get(_format, 'Wrong format')(dict_diff)
+    diff = generate_diff(file1, file2, _format)
     print(diff)
+
+
+def generate_diff(file1, file2, format='stylish'):
+    dict_diff = get_difference(file1, file2)
+    return _DICT_FORMATS.get(format, 'Wrong format')(dict_diff)

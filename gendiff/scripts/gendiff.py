@@ -1,9 +1,10 @@
 #!user/bin/env python3
 from gendiff import generate_diff
+from gendiff.generate_diff import start_diff
 
 
 def main():
-    generate_diff()
+    start_diff()
 
 
 if __name__ == '__main__':
