@@ -34,12 +34,6 @@ def get_data(file):
         return loader(fi)
 
 
-def start_diff():
-    arg = get_args()
-    diff = generate_diff(arg.first_file, arg.second_file, arg.format)
-    print(diff)
-
-
 def generate_diff(path1, path2, format='stylish'):
     if path.Path(path1).exists() and path.Path(path2).exists():
         file1 = get_data(path1)
