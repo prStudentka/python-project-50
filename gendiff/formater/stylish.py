@@ -4,9 +4,9 @@ _DICT_CHANGE = {
     'unchanged': '  '
 }
 _DICT_CONVERT = {
-    False: 'false',
-    True: 'true',
-    None: 'null'
+    'False': 'false',
+    'True': 'true',
+    'None': 'null'
 }
 _INDENT = 4
 _REPLACER = ' '
@@ -21,7 +21,7 @@ def is_value(node):
 
 
 def convert(elem):
-    return _DICT_CONVERT.get(elem, elem)
+    return _DICT_CONVERT.get(str(elem), elem)
 
 
 def formating(diffs, lvl=1):
