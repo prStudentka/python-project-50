@@ -1,4 +1,5 @@
 _DICT_CONVERT = {
+    '0': 0,
     'False': 'false',
     'True': 'true',
     'None': 'null'
