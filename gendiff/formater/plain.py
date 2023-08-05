@@ -1,7 +1,7 @@
 _DICT_CONVERT = {
-    False: 'false',
-    True: 'true',
-    None: 'null'
+    'False': 'false',
+    'True': 'true',
+    'None': 'null'
 }
 
 
