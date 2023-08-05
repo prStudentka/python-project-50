@@ -2,6 +2,7 @@ from gendiff.difference import differ as get_difference
 from .formater.stylish import formating as stylish
 from .formater.plain import formating as plain
 from .formater.to_json import formating as js
+from gendiff.cli import start_cli
 
 
 _DICT_FORMATS = {
@@ -11,6 +12,8 @@ _DICT_FORMATS = {
 }
 
 
-def generate_diff(file1, file2, format='stylish'):
+def generate_diff():
+    file1, file2, _format = start_cli()
     dict_diff = get_difference(file1, file2)
-    return _DICT_FORMATS.get(format, 'Wrong format')(dict_diff)
+    diff = _DICT_FORMATS.get(_format, 'Wrong format')(dict_diff)
+    print(diff)
