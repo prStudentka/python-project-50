@@ -13,11 +13,11 @@ def start_diff(module):
                         choices=['stylish', 'plain', 'json'],
                         help='set format of output, default="stylish"')
     arg = parser.parse_args()
-    path1, path2 = arg.first_file, arg.second_file
+    path1, path2, format = arg.first_file, arg.second_file, arg.format
     if path.Path(path1).exists() and path.Path(path2).exists():
         data1 = get_data(path1)
         data2 = get_data(path2)
-        diff = module.generate_diff(data1, data2)
+        diff = module.generate_diff(data1, data2, format)
         print(diff)
     else:
         raise FileNotFoundError('one of files not found')
