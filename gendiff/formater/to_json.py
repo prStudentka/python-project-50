@@ -5,4 +5,4 @@ _INDENT = 4
 
 
 def formating(diffs):
-    return json.dumps(diffs, _INDENT)
+    return json.dumps(diffs)
