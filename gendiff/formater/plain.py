@@ -25,7 +25,7 @@ def formating(diffs, path=""):
     for item in diffs:
         head = f"{path}{item['name']}"
         level = f"Property '{head}' was "
-        if item['meta'] in ['removed', 'added',  'updated']:
+        if item['meta'] in ['removed', 'added', 'updated']:
             tail = ''
             if item['meta'] == 'added':
                 tail = f" with value: {convert(item)}"
