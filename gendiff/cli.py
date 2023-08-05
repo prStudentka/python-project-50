@@ -3,7 +3,7 @@ import pathlib as path
 import gendiff.parser_end as pe
 
 
-def start_diff(module):
+def get_args():
     parser = argparse.ArgumentParser(
        description='Compares two configuration files and shows a difference.'
     )
@@ -12,13 +12,16 @@ def start_diff(module):
     parser.add_argument('-f', '--format', default='stylish',
                         choices=['stylish', 'plain', 'json'],
                         help='set format of output, default="stylish"')
-    arg = parser.parse_args()
-    path1, path2, format = arg.first_file, arg.second_file, arg.format
+    return parser.parse_args()
+
+
+def start_cli():
+    arg = get_args()
+    path1, path2, _format = arg.first_file, arg.second_file, arg.format
     if path.Path(path1).exists() and path.Path(path2).exists():
         data1 = get_data(path1)
         data2 = get_data(path2)
-        diff = module.generate_diff(data1, data2, format)
-        print(diff)
+        return data1, data2, _format
     else:
         raise FileNotFoundError('one of files not found')
 
