@@ -1,17 +1,19 @@
 import pytest
 import yaml
 import json
-from gendiff.generate_diff import generate_diff as gdiff
+from gendiff.generate_diff import generate_diff as gdiff, get_data
 from gendiff.parser_end import parser_suffix
-from gendiff.cli import get_data
 import pathlib
 
 
 _FILE1 = 'tests/fixtures/file1.json'
 _FILE2 = 'tests/fixtures/file2.json'
+_TREE1 = 'tests/fixtures/tree1.json'
+_TREE2 = 'tests/fixtures/tree2.json'
 _FILE1_YML = 'tests/fixtures/file1.yml'
 _FILE2_YML = 'tests/fixtures/file2.yaml'
 _EXPECTED = 'tests/fixtures/expected_json.txt'
+_EXPECTED_TREE = 'tests/fixtures/expected_tree.txt'
 
 
 def test_data():
@@ -36,7 +38,7 @@ def test_parser_suffix():
 
 
 def test_parse_json():
-    result = gdiff(get_data(_FILE1), get_data(_FILE2))
+    result = gdiff(_FILE1, _FILE2)
     with open(_EXPECTED, 'r') as f:
       report = f.read().rstrip()
     assert result == report
