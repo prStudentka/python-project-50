@@ -6,16 +6,16 @@
 
 ### You can get the actions badge by navigating to the required workflow on your repo on GitHub.com, clicking on the settings button on the right (the one with 3 dots beside the workflow search) and clicking on the Create status badge button.
 [![Hello-world](https://github.com/prStudentka/python-project-50/actions/workflows/hello-world.yml/badge.svg)](https://github.com/prStudentka/python-project-50/actions/workflows/hello-world.yml)
+<br>
+<b>Installation</b>:<br>
+Make sure you are running at least Python 3.10.0 <br>
+To install this package from GitHub on Your PC use command <br>
+git clone <a href="https://github.com/prStudentka/python-project-50">Repository github</a><br>
+pip install<br>
 
-<b>Installation</b>: 
-Make sure you are running at least Python 3.10.0
-To install this package from GitHub on Your PC use command
-git clone <a href="https://github.com/prStudentka/python-project-50"> Repository github </a>
-pip install
-
-<b>How to use:</b>
-gendiff -h
-gendiff path/file1 path/file2
-
-Use format output stylish, plain or json:
+<b>How to use:</b><br>
+gendiff -h<br>
+gendiff path/file1 path/file2<br>
+<br>
+Use format output stylish, plain or json:<br>
 gendiff -f plain path/file1 path/file2
