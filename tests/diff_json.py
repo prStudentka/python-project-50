@@ -1,19 +1,21 @@
 import pytest
 import yaml
-import json
 from gendiff.generate_diff import generate_diff as gdiff, get_data
 from gendiff.parser_end import parser_suffix
 import pathlib
 
 
-_FILE1 = 'tests/fixtures/file1.json'
-_FILE2 = 'tests/fixtures/file2.json'
-_TREE1 = 'tests/fixtures/tree1.json'
-_TREE2 = 'tests/fixtures/tree2.json'
-_FILE1_YML = 'tests/fixtures/file1.yml'
-_FILE2_YML = 'tests/fixtures/file2.yaml'
-_EXPECTED = 'tests/fixtures/expected_json.txt'
-_EXPECTED_TREE = 'tests/fixtures/expected_tree.txt'
+_PATH = 'tests/fixtures/'
+_FILE1 = pathlib.Path(_PATH, 'file1.json')
+_FILE2 = pathlib.Path(_PATH, 'file2.json')
+_TREE1 = pathlib.Path(_PATH, 'tree1.json')
+_TREE2 = pathlib.Path(_PATH, 'tree2.json')
+_FILE1_YML = pathlib.Path(_PATH, 'file1.yml')
+_FILE2_YML = pathlib.Path(_PATH, 'file2.yaml')
+_EXPECTED = pathlib.Path(_PATH, 'expected_json.txt')
+_EXPECTED_TREE = pathlib.Path(_PATH, 'expected_tree.txt')
+_EXPECTED_PLAIN = pathlib.Path(_PATH, 'expected_plain.txt')
+_OUTPUT_JSON = pathlib.Path(_PATH, 'output_json.txt')
 
 
 def test_data():
@@ -54,8 +56,37 @@ def test_wrong_format():
     assert result == 'Wrong format'
 
 
-def test_parse_json():
-    result = gdiff(_FILE1, _FILE2)
-    with open(_EXPECTED, 'r') as f:
-      report = f.read().rstrip()
-    assert result == report
+@pytest.mark.parametrize(
+    'input1, input2, expected',
+    [
+        pytest.param(
+            _FILE1, _FILE2, _EXPECTED,
+            id='files_json'),
+        pytest.param(
+            _FILE1_YML, _FILE2_YML, _EXPECTED,
+            id='files_yaml')
+        ])
+def test_parse_generate_diff(input1, input2, expected):
+    with open(expected, 'r') as f:
+        report = f.read().rstrip()
+    assert gdiff(input1, input2) == report
+
+
+@pytest.mark.parametrize(
+    'input1, input2, formats, expected',
+    [
+        pytest.param(
+            _TREE1, _TREE2, 'stylish',
+            open(_EXPECTED_TREE, 'r').read().rstrip(),
+            id='test_stylish'),
+        pytest.param(
+            _TREE1, _TREE2, 'plain',
+            open(_EXPECTED_PLAIN, 'r').read().rstrip(),
+            id='test_plain'),
+        pytest.param(
+            _TREE1, _TREE2, 'json',
+            open(_OUTPUT_JSON, 'r').read().rstrip(),
+            id='test_output_json')
+        ])
+def test_format(input1, input2, formats, expected):
+    assert gdiff(input1, input2, formats) == expected
