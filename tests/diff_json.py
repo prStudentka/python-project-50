@@ -65,7 +65,7 @@ def test_wrong_format():
         pytest.param(
             _FILE1_YML, _FILE2_YML, _EXPECTED,
             id='files_yaml')
-        ])
+    ])
 def test_parse_generate_diff(input1, input2, expected):
     with open(expected, 'r') as f:
         report = f.read().rstrip()
@@ -87,6 +87,6 @@ def test_parse_generate_diff(input1, input2, expected):
             _TREE1, _TREE2, 'json',
             open(_OUTPUT_JSON, 'r').read().rstrip(),
             id='test_output_json')
-        ])
+    ])
 def test_format(input1, input2, formats, expected):
     assert gdiff(input1, input2, formats) == expected
