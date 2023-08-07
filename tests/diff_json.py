@@ -37,6 +37,23 @@ def test_parser_suffix():
     assert result == data
 
 
+def test_exception_suffix():
+    with pytest.raises(Exception) as error:
+        get_data(_EXPECTED)
+    assert str(error.value) == 'extention error'
+
+
+def test_exception_file():
+    with pytest.raises(FileNotFoundError) as error:
+        gdiff('tests/file1.json', _FILE2)
+    assert str(error.value) == 'one of files not found'
+
+
+def test_wrong_format():
+    result = gdiff(_FILE1, _FILE2, 'SAME')
+    assert result == 'Wrong format'
+
+
 def test_parse_json():
     result = gdiff(_FILE1, _FILE2)
     with open(_EXPECTED, 'r') as f:

@@ -38,6 +38,8 @@ def generate_diff(path1, path2, format='stylish'):
         file1 = get_data(path1)
         file2 = get_data(path2)
         dict_diff = get_difference(file1, file2)
-        return _DICT_FORMATS.get(format, 'Wrong format')(dict_diff)
+        if format in _DICT_FORMATS:
+            return _DICT_FORMATS[format](dict_diff)
+        return 'Wrong format'
     else:
         raise FileNotFoundError('one of files not found')
