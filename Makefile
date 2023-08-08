@@ -11,7 +11,7 @@ gendiff-install:
 	python3 -m pip install . gendiff
 
 package-install:
-	python3 -m pip install --user dist/*.whl
+	python3 -m pip install --user --force-reinstall dist/*.whl
 
 lint:
 	poetry run flake8 gendiff
@@ -20,10 +20,10 @@ gendiff:
 	poetry run python -m gendiff.scripts.gendiff --help
 
 test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml tests/diff_json.py -vv
+	poetry run pytest --cov=gendiff --cov-report xml
 
-pytest:
-	poetry run pytest tests/diff_json.py -vv
+test:
+	poetry run pytest -vv
 
 example:
 	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yaml
