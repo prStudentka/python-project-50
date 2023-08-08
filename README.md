@@ -11,8 +11,10 @@
 Make sure you are running at least Python 3.10.0 <br>
 To install this package from GitHub on Your PC use command <br>
 git clone <a href="https://github.com/prStudentka/python-project-50">Repository github</a><br>
-pip install<br>
-
+install: poetry install<br>
+build: poetry build<br>
+gendiff start: poetry run gendiff -h<br>
+<br>
 <b>How to use:</b><br>
 gendiff -h<br>
 gendiff path/file1 path/file2<br>
