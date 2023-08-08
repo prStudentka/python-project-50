@@ -15,7 +15,7 @@ _DICT_FORMATS = {
 
 
 def get_args():
-    text = 'Compares two configuration files and shows a difference.'
+    text = 'Compares two configuration files and look at the difference.'
     parser = argparse.ArgumentParser(description=text)
     parser.add_argument('first_file', type=str)
     parser.add_argument('second_file', type=str)
