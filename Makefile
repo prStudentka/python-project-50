@@ -8,7 +8,7 @@ publish:
 	poetry publish --dry-run
 
 gendiff-install:
-	python3 -m pip install . gendiff
+	python3 -m pip install . hexlet-code
 
 package-install:
 	python3 -m pip install --user --force-reinstall dist/*.whl
