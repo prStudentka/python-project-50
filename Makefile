@@ -27,3 +27,6 @@ example:
 
 tree:
 	poetry run gendiff tests/fixtures/tree1.json tests/fixtures/tree2.json
+
+asciinema:
+	asciinema rec -t "gendiff"
