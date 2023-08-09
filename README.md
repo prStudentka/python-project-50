@@ -8,6 +8,9 @@
 [![Hello-world](https://github.com/prStudentka/python-project-50/actions/workflows/hello-world.yml/badge.svg)](https://github.com/prStudentka/python-project-50/actions/workflows/hello-world.yml)
 <br>
 <b>Installation</b>:<br>
+for debian 12+:<br>
+pip install + <a href="https://github.com/prStudentka/python-project-50">Repository github</a><br>
+for else:<br>
 Make sure you are running at least Python 3.10.0 <br>
 To install this package from GitHub on Your PC use command <br>
 git clone <a href="https://github.com/prStudentka/python-project-50">Repository github</a><br>
