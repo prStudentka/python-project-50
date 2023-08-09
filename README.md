@@ -23,4 +23,19 @@ gendiff -h<br>
 gendiff path/file1 path/file2<br>
 <br>
 Use format output stylish, plain or json:<br>
-gendiff -f plain path/file1 path/file2
+gendiff -f plain path/file1 path/file2<br>
+<br>
+Сравнение плоских файлов (JSON)<br>
+[![asciicast](https://asciinema.org/a/NG3BPBb9rWEpm1T1d8QBSETCP.svg)](https://asciinema.org/a/NG3BPBb9rWEpm1T1d8QBSETCP)
+<br>
+Сравнение плоских файлов (YAML)<br>
+[![asciicast](https://asciinema.org/a/mTf18KOfwj5JRJu2TDoa5h9mQ.svg)](https://asciinema.org/a/mTf18KOfwj5JRJu2TDoa5h9mQ)
+<br>
+Рекурсивное сравнение<br>
+[![asciicast](https://asciinema.org/a/1EqTOrmMtKYMyV7sLpLWuL6x0.svg)](https://asciinema.org/a/1EqTOrmMtKYMyV7sLpLWuL6x0)
+<br>
+Плоский формат<br>
+[![asciicast](https://asciinema.org/a/hmgR0EEisATA0LjHBT0WCKuf2.svg)](https://asciinema.org/a/hmgR0EEisATA0LjHBT0WCKuf2)
+<br>
+Вывод в JSON<br>
+[![asciicast](https://asciinema.org/a/MgRVy3F1Q2bGwEGmoTMQmu0Dq.svg)](https://asciinema.org/a/MgRVy3F1Q2bGwEGmoTMQmu0Dq)
