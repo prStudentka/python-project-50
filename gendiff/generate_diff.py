@@ -3,7 +3,7 @@ from .formater.stylish import formating as stylish
 from .formater.plain import formating as plain
 from .formater.to_json import formating as js
 import argparse
-import pathlib as path
+import pathlib as pathl
 import gendiff.parser_end as pe
 
 
@@ -25,16 +25,16 @@ def get_args():
     return parser.parse_args()
 
 
-def get_data(file):
-    with open(file, 'r') as fi:
-        loader = pe.parser_suffix((path.PurePath(file).suffix)[1:])
+def get_data(path):
+    with open(path, 'r') as file:
+        loader = pe.parser_suffix((pathl.PurePath(path).suffix)[1:])
         if loader is None:
             raise Exception('extention error')
-        return loader(fi)
+        return loader(file)
 
 
 def generate_diff(path1, path2, format='stylish'):
-    if path.Path(path1).exists() and path.Path(path2).exists():
+    if pathl.Path(path1).exists() and pathl.Path(path2).exists():
         file1 = get_data(path1)
         file2 = get_data(path2)
         dict_diff = get_difference(file1, file2)
