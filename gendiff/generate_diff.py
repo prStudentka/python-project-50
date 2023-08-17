@@ -1,6 +1,6 @@
 from gendiff.difference import differ as get_difference
-from .formater.stylish import formating as stylish
-from .formater.plain import formating as plain
+from .formater.to_stylish import formating as stylish
+from .formater.to_plain import formating as plain
 from .formater.to_json import formating as js
 import argparse
 import pathlib as pathl
