@@ -4,7 +4,7 @@ from .formater.to_plain import formating as plain
 from .formater.to_json import formating as js
 import argparse
 import pathlib as pathl
-import gendiff.parser_end as pe
+import gendiff.parser_end as parse
 
 
 _DICT_FORMATS = {
@@ -27,7 +27,7 @@ def get_args():
 
 def get_data(path):
     with open(path, 'r') as file:
-        loader = pe.parser_suffix((pathl.PurePath(path).suffix)[1:])
+        loader = parse.parse_suffix((pathl.PurePath(path).suffix)[1:])
         if loader is None:
             raise Exception('extention error')
         return loader(file)
