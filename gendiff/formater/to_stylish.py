@@ -8,10 +8,10 @@ _DICT_CONVERT = {
     'True': 'true',
     'None': 'null'
 }
-#_INDENT = 4
+
+
 _INDENT = 4
 _REPLACER = ' '
-#_REPLACER = ' '
 
 
 def is_nest(node):
