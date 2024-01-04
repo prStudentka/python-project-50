@@ -10,7 +10,7 @@ _DICT_CONVERT = {
 }
 #_INDENT = 4
 _INDENT = 4
-_REPLACER = '.'
+_REPLACER = ' '
 #_REPLACER = ' '
 
 
@@ -44,6 +44,5 @@ def format(diffs, lvl=1):
                 else:
                     walk(item['children'])
     walk(diffs)
-    print('hhhh', indent, len(indent), (lvl - 1))
     result.append(f'{(_INDENT * (lvl - 1)) * _REPLACER}}}')
     return '\n'.join(result)
