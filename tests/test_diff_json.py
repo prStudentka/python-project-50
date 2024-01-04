@@ -27,13 +27,13 @@ def test_data():
 
 def test_parser_suffix():
     assert pathlib.PurePath(_FILE2_YML).suffix == '.yaml'
-    loader = parser_suffix('yaml')
+    loader = parse_suffix('yaml')
     with open(_FILE2_YML, 'r') as f:
         result = loader(f)
     with open(_FILE2_YML, 'r') as df:
         data = yaml.safe_load(df)
     assert result == data
-    loader = parser_suffix('json')
+    loader = parse_suffix('json')
     with open(_FILE2, 'r') as jf:
         result = loader(jf)
     assert result == data
