@@ -20,7 +20,7 @@ def convert(elem):
     return '[complex value]'
 
 
-def format(diffs, path=""):
+def get_plain(diffs, path=""):
     lines = []
     for item in diffs:
         head = f"{path}{item['name']}"
@@ -34,6 +34,10 @@ def format(diffs, path=""):
                 tail = f". From {(value[0])} to {value[1]}"
             lines.append(f"{level}{item['meta']}{tail}")
         if is_nest(item) and item['meta'] == 'unchanged':
-            value = format(item['children'], f"{head}.")
+            value = get_plain(item['children'], f"{head}.")
             lines.append(f"{value}")
     return '\n'.join(lines)
+
+
+def format(diff):
+    return get_plain(diff)
