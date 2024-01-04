@@ -26,7 +26,7 @@ def convert(elem):
     return _DICT_CONVERT.get(str(elem), elem)
 
 
-def format(diffs, lvl=1):
+def get_stylish(diffs, lvl=1):
     result = ['{']
     indent = (lvl * _INDENT - 2) * _REPLACER
 
@@ -39,10 +39,14 @@ def format(diffs, lvl=1):
                 result.append(value)
             if is_nest(item):
                 if sign:
-                    value = f'{deep}{format(item["children"], lvl + 1)}'
+                    value = f'{deep}{get_stylish(item["children"], lvl + 1)}'
                     result.append(value)
                 else:
                     walk(item['children'])
     walk(diffs)
     result.append(f'{(_INDENT * (lvl - 1)) * _REPLACER}}}')
     return '\n'.join(result)
+
+
+def format(diff):
+    return get_stylish(diff)

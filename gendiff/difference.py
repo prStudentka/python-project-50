@@ -1,28 +1,28 @@
-def make_value(key, value, meta='unchanged'):
+def make_value(key, value, status='unchanged'):
     return {
         'name': key,
         'value': value,
-        'meta': meta,
+        'meta': status,
         'type': 'value'
     }
 
 
-def make_nest(key, children, meta='unchanged'):
+def make_nest(key, children, status='unchanged'):
     return {
         'name': key,
         'children': children,
-        'meta': meta,
+        'meta': status,
         'type': 'nest'
     }
 
 
-def choose_fill(key, item, meta='unchanged'):
+def choose_fill(key, item, status='unchanged'):
     if type(item) is not dict:
-        return make_value(key, item, meta)
+        return make_value(key, item, status)
     children = []
     for key_item in item.keys():
         children.append(choose_fill(key_item, item[key_item]))
-    return make_nest(key, children, meta)
+    return make_nest(key, children, status)
 
 
 def differ(data1, data2):
