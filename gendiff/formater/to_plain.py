@@ -20,7 +20,7 @@ def convert(elem):
     return '[complex value]'
 
 
-def formating(diffs, path=""):
+def format(diffs, path=""):
     lines = []
     for item in diffs:
         head = f"{path}{item['name']}"

@@ -24,7 +24,7 @@ def convert(elem):
     return _DICT_CONVERT.get(str(elem), elem)
 
 
-def formating(diffs, lvl=1):
+def format(diffs, lvl=1):
     result = ['{']
     indent = (_INDENT - 2) * _REPLACER
 
