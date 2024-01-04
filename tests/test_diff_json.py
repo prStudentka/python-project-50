@@ -1,7 +1,7 @@
 import pytest
 import yaml
 from gendiff.generate_diff import generate_diff as gdiff, get_data
-from gendiff.parser_end import parser_suffix
+from gendiff.parser_end import parse_suffix
 import pathlib
 
 
