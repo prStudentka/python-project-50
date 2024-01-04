@@ -2,6 +2,10 @@
 name = "hexlet-code"
 version = "0.1.0"
 description = "Difference between two files and output in format"
+classifiers = [
+    "Environment :: Console",
+    "Topic :: Text Processing"
+]
 authors = ["prStudentka"]
 repository = "https://github.com/prStudentka/python-project-50"
 readme = "README.md"
