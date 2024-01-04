@@ -34,6 +34,6 @@ def format(diffs, path=""):
                 tail = f". From {(value[0])} to {value[1]}"
             lines.append(f"{level}{item['meta']}{tail}")
         if is_nest(item) and item['meta'] == 'unchanged':
-            value = formating(item['children'], f"{head}.")
+            value = format(item['children'], f"{head}.")
             lines.append(f"{value}")
     return '\n'.join(lines)

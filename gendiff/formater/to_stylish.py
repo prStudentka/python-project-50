@@ -37,7 +37,7 @@ def format(diffs, lvl=1):
                 result.append(value)
             if is_nest(item):
                 if sign:
-                    value = f'{deep}{formating(item["children"], lvl + 2)}'
+                    value = f'{deep}{format(item["children"], lvl + 2)}'
                     result.append(value)
                 else:
                     walk(item['children'])
