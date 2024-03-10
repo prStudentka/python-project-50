@@ -12,7 +12,7 @@ _REPLACER = ' '
 def convert(elem):
     if type(elem) in (int, float, str):
         return elem
-    if type(elem) == bool:
+    if type(elem) is bool:
         return str(elem).lower()
     if elem is None:
         return "null"

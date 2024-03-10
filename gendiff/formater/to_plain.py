@@ -3,11 +3,11 @@ def convert(elem):
         value = elem['value']
         if type(value) in (int, float):
             return value
-        if type(value) == bool:
+        if type(value) is bool:
             return str(value).lower()
         if value is None:
             return "null"
-        if type(value) == str:
+        if type(value) is str:
             return f"'{value}'"
     return '[complex value]'
 

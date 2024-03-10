@@ -58,7 +58,7 @@ def test_wrong_format():
 
 def get_expected(path):
     with open(path, 'r') as file:
-        report = file.read().rstrip()    
+        report = file.read().rstrip()
     return report
 
 
