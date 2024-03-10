@@ -6,16 +6,8 @@ _DICT_CONVERT = {
 }
 
 
-def is_nest(node):
-    return node['type'] == 'nest'
-
-
-def is_value(node):
-    return node['type'] == 'value'
-
-
 def convert(elem):
-    if is_value(elem):
+    if not isinstance(elem['value'], list):
         return _DICT_CONVERT.get(f"{elem['value']}", f"'{elem['value']}'")
     return '[complex value]'
 
@@ -25,16 +17,16 @@ def get_plain(diffs, path=""):
     for item in diffs:
         head = f"{path}{item['name']}"
         level = f"Property '{head}' was "
-        if item['meta'] in ['removed', 'added', 'updated']:
+        if item['status'] in ['removed', 'added', 'updated']:
             tail = ''
-            if item['meta'] == 'added':
+            if item['status'] == 'added':
                 tail = f" with value: {convert(item)}"
-            if item['meta'] == 'updated':
-                value = list(map(convert, item['children']))
-                tail = f". From {(value[0])} to {value[1]}"
-            lines.append(f"{level}{item['meta']}{tail}")
-        if is_nest(item) and item['meta'] == 'unchanged':
-            value = get_plain(item['children'], f"{head}.")
+            if item['status'] == 'updated':
+                value = list(map(convert, item['value']))
+                tail = f". From {value[0]} to {value[1]}"
+            lines.append(f"{level}{item['status']}{tail}")
+        if item['status'] == 'nested':
+            value = get_plain(item['value'], f"{head}.")
             lines.append(f"{value}")
     return '\n'.join(lines)
 

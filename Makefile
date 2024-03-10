@@ -28,5 +28,11 @@ example:
 tree:
 	poetry run gendiff tests/fixtures/tree1.json tests/fixtures/tree2.json
 
+plain:
+	poetry run gendiff -f plain tests/fixtures/file1.yml tests/fixtures/file2.yaml
+
+plain-tree:
+	poetry run gendiff -f plain tests/fixtures/tree1.json tests/fixtures/tree2.json
+
 asciinema:
 	asciinema rec -t "gendiff"
