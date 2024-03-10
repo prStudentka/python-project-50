@@ -56,6 +56,12 @@ def test_wrong_format():
     assert result == 'Wrong format'
 
 
+def get_expected(path):
+    with open(path, 'r') as file:
+        report = file.read().rstrip()    
+    return report
+
+
 @pytest.mark.parametrize(
     'input1, input2, expected',
     [
@@ -67,8 +73,7 @@ def test_wrong_format():
             id='files_yaml')
     ])
 def test_parse_generate_diff(input1, input2, expected):
-    with open(expected, 'r') as f:
-        report = f.read().rstrip()
+    report = get_expected(expected)
     assert gdiff(input1, input2) == report
 
 
@@ -76,17 +81,15 @@ def test_parse_generate_diff(input1, input2, expected):
     'input1, input2, formats, expected',
     [
         pytest.param(
-            _TREE1, _TREE2, 'stylish',
-            open(_EXPECTED_TREE, 'r').read().rstrip(),
+            _TREE1, _TREE2, 'stylish', _EXPECTED_TREE,
             id='test_stylish'),
         pytest.param(
-            _TREE1, _TREE2, 'plain',
-            open(_EXPECTED_PLAIN, 'r').read().rstrip(),
+            _TREE1, _TREE2, 'plain', _EXPECTED_PLAIN,
             id='test_plain'),
         pytest.param(
-            _TREE1, _TREE2, 'json',
-            open(_OUTPUT_JSON, 'r').read().rstrip(),
+            _TREE1, _TREE2, 'json', _OUTPUT_JSON,
             id='test_output_json')
     ])
 def test_format(input1, input2, formats, expected):
-    assert gdiff(input1, input2, formats) == expected
+    report = get_expected(expected)
+    assert gdiff(input1, input2, formats) == report

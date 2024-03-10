@@ -1,14 +1,12 @@
-_DICT_CONVERT = {
-    '0': 0,
-    'False': 'false',
-    'True': 'true',
-    'None': 'null'
-}
-
-
 def convert(elem):
     if not isinstance(elem['value'], list):
-        return _DICT_CONVERT.get(f"{elem['value']}", f"'{elem['value']}'")
+        value = elem['value']
+        if type(value) in (int, float, str):
+            return f"'{value}'"
+        if type(value) == bool:
+            return str(value).lower()
+        if value is None:
+            return "null"
     return '[complex value]'
 
 

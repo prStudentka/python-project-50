@@ -5,18 +5,17 @@ _DICT_CHANGE = {
     'nested': '  '
 }
 
-_DICT_CONVERT = {
-    'False': 'false',
-    'True': 'true',
-    'None': 'null'
-}
-
 _INDENT = 4
 _REPLACER = ' '
 
 
 def convert(elem):
-    return _DICT_CONVERT.get(str(elem), elem)
+    if type(elem) in (int, float, str):
+        return elem
+    if type(elem) == bool:
+        return str(elem).lower()
+    if elem is None:
+        return "null"
 
 
 def get_stylish(diffs, lvl=1):
