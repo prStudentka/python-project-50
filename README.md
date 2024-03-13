@@ -26,8 +26,8 @@ gendiff path/file1 path/file2
 gendiff -f plain path/file1 path/file2
 
 #### Сравнение плоских файлов. Рекурсивное сравнение ####
-[![Example 1](https://github.com/prStudentka/hexlet-git/blob/main/pr50/gendiff_stylish.jpg?raw=true)]
+![Example 1](https://github.com/prStudentka/hexlet-git/blob/main/pr50/gendiff_stylish.jpg?raw=true)
 
 #### Плоский формат ####
-[![Example 2](https://github.com/prStudentka/hexlet-git/blob/main/pr50/gendiff_plain.jpg?raw=true)]
+![Example 2](https://github.com/prStudentka/hexlet-git/blob/main/pr50/gendiff_plain.jpg?raw=true)
 
