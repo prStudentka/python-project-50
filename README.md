@@ -25,17 +25,9 @@ gendiff path/file1 path/file2
 ###### Use format output stylish, plain or json: ######
 gendiff -f plain path/file1 path/file2
 
-#### Сравнение плоских файлов (JSON) ####
-[![asciicast](https://asciinema.org/a/NG3BPBb9rWEpm1T1d8QBSETCP.svg)](https://asciinema.org/a/NG3BPBb9rWEpm1T1d8QBSETCP)
-
-#### Сравнение плоских файлов (YAML) ####
-[![asciicast](https://asciinema.org/a/mTf18KOfwj5JRJu2TDoa5h9mQ.svg)](https://asciinema.org/a/mTf18KOfwj5JRJu2TDoa5h9mQ)
-
-#### Рекурсивное сравнение ####
-[![asciicast](https://asciinema.org/a/1EqTOrmMtKYMyV7sLpLWuL6x0.svg)](https://asciinema.org/a/1EqTOrmMtKYMyV7sLpLWuL6x0)
+#### Сравнение плоских файлов. Рекурсивное сравнение ####
+[![Example 1](https://github.com/prStudentka/hexlet-git/blob/main/pr50/gendiff_stylish.jpg?raw=true)]
 
 #### Плоский формат ####
-[![asciicast](https://asciinema.org/a/hmgR0EEisATA0LjHBT0WCKuf2.svg)](https://asciinema.org/a/hmgR0EEisATA0LjHBT0WCKuf2)
+[![Example 2](https://github.com/prStudentka/hexlet-git/blob/main/pr50/gendiff_plain.jpg?raw=true)]
 
-#### Вывод в JSON ####
-[![asciicast](https://asciinema.org/a/MgRVy3F1Q2bGwEGmoTMQmu0Dq.svg)](https://asciinema.org/a/MgRVy3F1Q2bGwEGmoTMQmu0Dq)
